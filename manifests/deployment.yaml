@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: td
+  name: todo-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo
+  template:
+    metadata:
+      labels:
+        app: todo
+    spec:
+      containers:
+        - name: todo-server
+          image: jhiekkap/todo-server:v4
+          imagePullPolicy: Always
+          env:
+            - name: NODE_ENV
+              value: production
+        - name: todo-client
+          image: jhiekkap/todo-client:v3
+          imagePullPolicy: Always

@@ -1,0 +1,23 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: wikijob
+  namespace: td
+spec:
+  schedule: "*/1 * * * *" # "0 1 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: wikijob
+            image: jhiekkap/wikijob:v1
+            env:
+            - name: NODE_ENV
+              value: production
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secrets
+                  key: postgres-password
+          restartPolicy: OnFailure
