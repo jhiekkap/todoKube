@@ -44,7 +44,7 @@ jobs:
       #     curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
       #     chmod u+x ./kustomize
       - name: Delete namespace
-        run:  kubectl delete namespace ${GITHUB_REF#refs/heads/} || true
+        run:  kubectl delete namespace ${{ github.event.ref }} || true
           # kubectl config set-context --current --namespace=${GITHUB_REF#refs/heads/}
           # ./kustomize edit set namespace ${GITHUB_REF#refs/heads/}
           # ./kustomize edit set image TODO-SERVER=$IMAGE_SERVER_WITH_TAG
