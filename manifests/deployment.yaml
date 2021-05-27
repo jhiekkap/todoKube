@@ -14,12 +14,17 @@ spec:
         app: todo
     spec:
       containers:
+        containers:
         - name: todo-server
-          image: jhiekkap/todo-server:v4
+          image: TODO/SERVER
+        # - name: todo-server
+        #   image: jhiekkap/todo-server:v2
           imagePullPolicy: Always
           env:
             - name: NODE_ENV
               value: production
         - name: todo-client
-          image: jhiekkap/todo-client:v4
+          image: TODO/CLIENT
+        # - name: todo-client
+        #   image: jhiekkap/todo-client:v1
           imagePullPolicy: Always
