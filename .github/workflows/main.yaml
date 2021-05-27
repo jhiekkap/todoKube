@@ -9,6 +9,8 @@ env:
   GKE_ZONE: europe-north1-b
   IMAGE_SERVER: todo-server
   IMAGE_CLIENT: todo-client
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  
 jobs:
   build-publish-deploy:
     name: Build, Publish and Deploy
