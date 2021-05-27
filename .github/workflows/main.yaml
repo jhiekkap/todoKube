@@ -46,7 +46,7 @@ jobs:
         chmod u+x ./kustomize
     - name: Deploy
       run: |-
-        ./kustomize edit set image TODO/SERVER=$IMAGE_SERVER_WITH_TAG
-        ./kustomize edit set image TODO/CLIENT=$IMAGE_CLIENT_WITH_TAG
+        ./kustomize edit set image TODO-SERVER=$IMAGE_SERVER_WITH_TAG
+        ./kustomize edit set image TODO-CLIENT=$IMAGE_CLIENT_WITH_TAG
         kubectl apply -k .
         kubectl rollout status deployment todo-dep -n td

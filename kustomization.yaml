@@ -10,7 +10,7 @@ resources:
 - manifests/ingress.yaml
 - manifests/job.yaml
 images:
-- name: TODO/SERVER
+- name: TODO-SERVER
   newName: jhiekkap/todo-server
-- name: TODO/CLIENT
+- name: TODO-CLIENT
   newName: jhiekkap/todo-client
