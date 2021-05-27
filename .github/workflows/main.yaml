@@ -49,5 +49,4 @@ jobs:
         ./kustomize edit set image TODO/SERVER=$IMAGE_SERVER_WITH_TAG
         ./kustomize edit set image TODO/CLIENT=$IMAGE_CLIENT_WITH_TAG
         kubectl apply -k .
-        kubectl rollout status deployment $IMAGE_SERVER
-        kubectl rollout status deployment $IMAGE_CLIENT
+        kubectl rollout status deployment todo 
