@@ -44,12 +44,6 @@ jobs:
           curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
           chmod u+x ./kustomize
       - name: Deploy
-        # run: |-
-        #   ./kustomize edit set image TODO-SERVER=$IMAGE_SERVER_WITH_TAG
-        #   ./kustomize edit set image TODO-CLIENT=$IMAGE_CLIENT_WITH_TAG
-        #   kubectl apply -k .
-        #   kubectl rollout status deployment todo-dep -n td
-
         run: |-
           kubectl create namespace ${GITHUB_REF#refs/heads/} || true
           kubectl config set-context --current --namespace=${GITHUB_REF#refs/heads/}
