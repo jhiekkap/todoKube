@@ -29,7 +29,7 @@ jobs:
     - name: Create server image name and tag
       run: echo "::set-env name=IMAGE_SERVER_WITH_TAG::gcr.io/${{ secrets.GKE_PROJECT }}/$IMAGE_SERVER:${GITHUB_REF#refs/heads/}-$GITHUB_SHA"
     - name: Build
-      run: cd server && docker build --tag "$IMAGE_SERVER_WITH_TAG" ./server . && cd ..
+      run: cd server && docker build --tag "$IMAGE_SERVER_WITH_TAG" . && cd ..
     - name: Publish
       run: docker push "$IMAGE_SERVER_WITH_TAG"
 
