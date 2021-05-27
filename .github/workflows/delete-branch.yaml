@@ -3,12 +3,12 @@ name: Delete namespace
 on:
   delete
 
-# env:
-#   GKE_CLUSTER: dwk-cluster
-#   GKE_ZONE: europe-north1-b
+env:
+  GKE_CLUSTER: dwk-cluster
+  GKE_ZONE: europe-north1-b
 #   IMAGE_SERVER: todo-server
 #   IMAGE_CLIENT: todo-client
-#   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
   Delete:
@@ -18,12 +18,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-      #   with:
-      #     service_account_key: ${{ secrets.GKE_SA_KEY }}
-      #     project_id: ${{ secrets.GKE_PROJECT }}
-      # - run: gcloud --quiet auth configure-docker
-      # - run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          service_account_key: ${{ secrets.GKE_SA_KEY }}
+          project_id: ${{ secrets.GKE_PROJECT }}
+      - run: gcloud --quiet auth configure-docker
+      - run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
       # - name: Create server image name and tag
       #   run: echo "::set-env name=IMAGE_SERVER_WITH_TAG::gcr.io/${{ secrets.GKE_PROJECT }}/$IMAGE_SERVER:${GITHUB_REF#refs/heads/}-$GITHUB_SHA"
