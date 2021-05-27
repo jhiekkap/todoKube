@@ -46,7 +46,7 @@ function App() {
           <button
             type="submit"
             disabled={newTodo === ''}>
-            Create TODO
+            PUSH ME
             </button>
         </span>
       </form>
