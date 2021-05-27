@@ -4,14 +4,14 @@ import './App.css';
 
 console.log('Ympäristö on', process.env.NODE_ENV);
 
-const host = process.env.NODE_ENV === 'development' ? 'http://localhost' : '10.3.240.71';
+const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : 'http://34.117.227.60';
 
 function App() {
   const [newTodo, setNewTodo] = useState<string>('');
   const [todos, setTodos] = useState<string[]>([]);
 
   useEffect(() => {
-    axios.get(host + ':3001/todos')
+    axios.get(endpoint + '/todos')
       .then((dbTodos: any) => setTodos(dbTodos.data))
       .catch((err) => console.log(err));
   }, [])
@@ -19,7 +19,7 @@ function App() {
   const handleSubmit = async () => {
     console.log('Saving new todo: ', newTodo);
     try {
-      const response = await axios.post(host + ':3001/todos', { newTodo });
+      const response = await axios.post(endpoint + '/todos', { newTodo });
       setTodos(response.data);
       setNewTodo('');
     } catch (err) {
@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className="App">
-      <img src={host + ':3001/images/image.jpg'} alt="pic of day" style={{ width: '50%', height: '50%' }} />
+      <img src={endpoint + '/images/image.jpg'} alt="pic of day" style={{ width: '50%', height: '50%' }} />
       <form onSubmit={(e) => {
         console.log('HELLOUTA')
         e.preventDefault();

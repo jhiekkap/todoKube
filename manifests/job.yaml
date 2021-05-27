@@ -4,7 +4,7 @@ metadata:
   name: wikijob
   namespace: td
 spec:
-  schedule: "*/1 * * * *" # "0 1 * * *"
+  schedule:  "0 8 * * *" # every morning 8 am
   jobTemplate:
     spec:
       template:

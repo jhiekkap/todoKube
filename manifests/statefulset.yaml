@@ -54,7 +54,7 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: mp-claim          
-  # volumeClaimTemplates:
+  # volumeClaimTemplates:   #with k3d
   #   - metadata:
   #       name: data
   #     spec:

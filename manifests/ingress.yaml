@@ -3,15 +3,19 @@ kind: Ingress
 metadata:
   name: todo-ingress
   namespace: td
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - http:
         paths:
-          - path: /
+          - path: /*
+            pathType: Prefix
             backend:
               serviceName: todo-client-svc
               servicePort: 80
-          - path: /images
+          - path: /images/*
+            pathType: Prefix
             backend:
               serviceName: todo-server-svc
               servicePort: 80
@@ -19,4 +23,5 @@ spec:
             backend:
               serviceName: todo-server-svc
               servicePort: 80
+          
          

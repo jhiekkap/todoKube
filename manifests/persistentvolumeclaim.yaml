@@ -4,7 +4,7 @@ metadata:
   name: mp-claim
   namespace: td
 spec:
-  # storageClassName: manual
+  # storageClassName: manual #(needed in k3d)
   accessModes:
     - ReadWriteOnce
   resources:
