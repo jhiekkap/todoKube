@@ -10,7 +10,7 @@ env:
   IMAGE_SERVER: todo-server
   IMAGE_CLIENT: todo-client
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-  
+
 jobs:
   build-publish-deploy:
     name: Build, Publish and Deploy
@@ -29,14 +29,14 @@ jobs:
     - name: Create server image name and tag
       run: echo "::set-env name=IMAGE_SERVER_WITH_TAG::gcr.io/${{ secrets.GKE_PROJECT }}/$IMAGE_SERVER:${GITHUB_REF#refs/heads/}-$GITHUB_SHA"
     - name: Build
-      run: docker build --tag "$IMAGE_SERVER_WITH_TAG" .
+      run: docker build --tag "$IMAGE_SERVER_WITH_TAG" ./server .
     - name: Publish
       run: docker push "$IMAGE_SERVER_WITH_TAG"
 
     - name: Create client image name and tag
       run: echo "::set-env name=IMAGE_CLIENT_WITH_TAG::gcr.io/${{ secrets.GKE_PROJECT }}/$IMAGE_CLIENT:${GITHUB_REF#refs/heads/}-$GITHUB_SHA"
     - name: Build
-      run: docker build --tag "$IMAGE_CLIENT_WITH_TAG" .
+      run: docker build --tag "$IMAGE_CLIENT_WITH_TAG" ./todo .
     - name: Publish
       run: docker push "$IMAGE_CLIENT_WITH_TAG"
 
