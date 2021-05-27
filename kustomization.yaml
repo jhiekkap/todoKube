@@ -12,5 +12,5 @@ resources:
 images:
 - name: TODO/SERVER
   newName: jhiekkap/todo-server
-- name: TODO/client
+- name: TODO/CLIENT
   newName: jhiekkap/todo-client
